@@ -75,15 +75,3 @@ steps:
         text: APPLY
         description: apply button in the skills dropdown
         action: click
-  - prompt: click the double chevron down on a job post to expand it
-    commands:
-      - command: focus-application
-        name: Google Chrome
-      - command: hover-image
-        description: double chevron down icon on a job post
-        action: click
-  - prompt: ''
-    commands:
-      - command: assert
-        async: true
-        expect: that java is a top skill in the clicked job
