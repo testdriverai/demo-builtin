@@ -1,0 +1,44 @@
+version: 4.1.43
+steps:
+  - prompt: search for software engineer jobs on builtin
+    commands:
+      - command: focus-application
+        name: Google Chrome
+      - command: hover-text
+        text: Job Title or Keyword
+        description: job search input field
+        action: click
+      - command: type
+        text: software engineer
+      - command: hover-text
+        text: SEE JOB MATCHES
+        description: search button
+        action: click
+  - prompt: assert the job board shows software engineer jobs
+    commands:
+      - command: focus-application
+        name: Google Chrome
+      - command: assert
+        async: true
+        expect: the job board shows software engineer jobs
+  - prompt: assert there are jobs within the Austin area in the results
+    commands:
+      - command: assert
+        async: true
+        expect: there are jobs within the Austin area in the results
+  - prompt: click on the skills dropdown
+    commands:
+      - command: focus-application
+        name: Google Chrome
+      - command: hover-text
+        text: Skills
+        description: skills dropdown button
+        action: click
+  - prompt: in the skills filter, type the word java
+    commands:
+      - command: focus-application
+        name: Google Chrome
+      - command: hover-text
+        text: Type to filter...
+        description: skills filter input field
+        action: click
