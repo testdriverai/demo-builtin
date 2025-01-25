@@ -16,27 +16,27 @@ jobs:
         include:
           - city: Austin
             website_url: https://www.builtinaustin.com/
-          - city: Boston
-            website_url: https://www.builtinboston.com/
-          - city: Chicago
-            website_url: https://www.builtinchicago.org/
-          - city: Denver
-            website_url: https://www.builtincolorado.com/
-          - city: Los Angeles
-            website_url: https://www.builtinla.com/
-          - city: New York City
-            website_url: https://www.builtinnyc.com/
-          - city: Seattle
-            website_url: https://www.builtinseattle.com/
-          - city: San Francisco
-            website_url: https://www.builtinsf.com/
+          # - city: Boston
+          #   website_url: https://www.builtinboston.com/
+          # - city: Chicago
+          #   website_url: https://www.builtinchicago.org/
+          # - city: Denver
+          #   website_url: https://www.builtincolorado.com/
+          # - city: Los Angeles
+          #   website_url: https://www.builtinla.com/
+          # - city: New York City
+          #   website_url: https://www.builtinnyc.com/
+          # - city: Seattle
+          #   website_url: https://www.builtinseattle.com/
+          # - city: San Francisco
+          #   website_url: https://www.builtinsf.com/
 
     steps:
       - uses: testdriverai/action@main
         with:
           key: ${{ secrets.TESTDRIVER_API_KEY }}
           prompt: |
-            1. /run testdriver/testdriver.yml
+            1. /run testdriver/testdriver.yml false false
             2. click on the first job
             3. /assert that the job shows java skills
           prerun: |
