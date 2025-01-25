@@ -21,11 +21,11 @@ steps:
       - command: assert
         async: true
         expect: the job board shows software engineer jobs
-  - prompt: assert there are jobs within the Austin area in the results
+  - prompt: assert there are jobs within the TD_CITY area in the results
     commands:
       - command: assert
         async: true
-        expect: there are jobs within the Austin area in the results
+        expect: there are jobs within the TD_CITY area in the results
   - prompt: click on the skills dropdown
     commands:
       - command: focus-application
@@ -42,3 +42,48 @@ steps:
         text: Type to filter...
         description: skills filter input field
         action: click
+      - command: type
+        text: Java
+  - prompt: ''
+    commands:
+      - command: assert
+        async: true
+        expect: >-
+          that both java and javascript are available as options in the skills
+          dropdown
+  - prompt: click on the java option in the skills menu
+    commands:
+      - command: focus-application
+        name: Google Chrome
+      - command: hover-text
+        text: Java
+        description: java option in the skills dropdown
+        action: click
+  - prompt: click on java within the skills menu. it has the number of jobs next to it
+    commands:
+      - command: focus-application
+        name: Google Chrome
+      - command: hover-text
+        text: Java (221)
+        description: java option with the number of jobs in the skills dropdown
+        action: click
+  - prompt: click apply
+    commands:
+      - command: focus-application
+        name: Google Chrome
+      - command: hover-text
+        text: APPLY
+        description: apply button in the skills dropdown
+        action: click
+  - prompt: click the double chevron down on a job post to expand it
+    commands:
+      - command: focus-application
+        name: Google Chrome
+      - command: hover-image
+        description: double chevron down icon on a job post
+        action: click
+  - prompt: ''
+    commands:
+      - command: assert
+        async: true
+        expect: that java is a top skill in the clicked job
