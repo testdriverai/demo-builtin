@@ -75,3 +75,30 @@ steps:
         text: APPLY
         description: apply button in the skills dropdown
         action: click
+  - prompt: click on one of the jobs
+    commands:
+      - command: focus-application
+        name: Google Chrome
+      - command: hover-text
+        text: Backend Software Engineer
+        description: job title in the job listings
+        action: click
+  - prompt: click on one of the jobs
+    commands:
+      - command: focus-application
+        name: Google Chrome
+      - command: hover-text
+        text: Backend Software Engineer
+        description: first job listing on the page
+        action: click
+  - prompt: scroll until top skills
+    commands:
+      - command: focus-application
+        name: Google Chrome
+      - command: scroll-until-text
+        text: Top Skills
+        direction: down
+  - prompt: scroll until top skills
+    commands:
+      - command: assert
+        expect: java is a top skill
