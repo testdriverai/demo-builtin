@@ -8,22 +8,42 @@ on:
 
 jobs:
   test:
-    name: "TestDriver"
+    name: "TestDriver - ${{ matrix.city }}"
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - city: Austin
+            website_url: https://www.builtinaustin.com/
+          - city: Boston
+            website_url: https://www.builtinboston.com/
+          - city: Chicago
+            website_url: https://www.builtinchicago.org/
+          - city: Denver
+            website_url: https://www.builtincolorado.com/
+          - city: Los Angeles
+            website_url: https://www.builtinla.com/
+          - city: New York City
+            website_url: https://www.builtinnyc.com/
+          - city: Seattle
+            website_url: https://www.builtinnyc.com/
+          - city: San Francisco
+            website_url: https://www.builtinsf.com/
+
     steps:
       - uses: testdriverai/action@main
         with:
-          key: ${{secrets.TESTDRIVER_API_KEY}}
+          key: ${{ secrets.TESTDRIVER_API_KEY }}
           prompt: |
             1. /run testdriver/test.yml
           prerun: |
             cd $env:TEMP
             npm init -y
             npm install dashcam-chrome
-            (gc ./testdriver/test.yml) -replace "TD_CITY", 'San Francisco' | sc -Force ./testdriver/test.yml
-            Start-Process "C:/Program Files/Google/Chrome/Application/chrome.exe" -ArgumentList "--start-maximized", "--load-extension=$(pwd)/node_modules/dashcam-chrome/build", "${{ env.WEBSITE_URL }}"
+            (gc ./testdriver/test.yml) -replace "TD_CITY", '${{ matrix.city }}' | sc -Force ./testdriver/test.yml
+            Start-Process "C:/Program Files/Google/Chrome/Application/chrome.exe" -ArgumentList "--start-maximized", "--load-extension=$(pwd)/node_modules/dashcam-chrome/build", "${{ matrix.website_url }}"
             exit
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FORCE_COLOR: "3"
-          WEBSITE_URL: "https://builtinsf.com" # Define the website URL here
+          WEBSITE_URL: ${{ matrix.website_url }}
