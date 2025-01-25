@@ -27,7 +27,7 @@ jobs:
           - city: New York City
             website_url: https://www.builtinnyc.com/
           - city: Seattle
-            website_url: https://www.builtinnyc.com/
+            website_url: https://www.builtinseattle.com/
           - city: San Francisco
             website_url: https://www.builtinsf.com/
 
