@@ -11,6 +11,7 @@ jobs:
     name: "TestDriver - ${{ matrix.city }}"
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         include:
           - city: Austin
@@ -37,10 +38,10 @@ jobs:
           prompt: |
             1. /run testdriver/testdriver.yml
           prerun: |
+            (gc ./testdriver/testdriver.yml) -replace "TD_CITY", '${{ matrix.city }}' | sc -Force ./testdriver/testdriver.yml
             cd $env:TEMP
             npm init -y
             npm install dashcam-chrome
-            (gc ./testdriver/testdriver.yml) -replace "TD_CITY", '${{ matrix.city }}' | sc -Force ./testdriver/testdriver.yml
             Start-Process "C:/Program Files/Google/Chrome/Application/chrome.exe" -ArgumentList "--start-maximized", "--load-extension=$(pwd)/node_modules/dashcam-chrome/build", "${{ matrix.website_url }}"
             exit
         env:
