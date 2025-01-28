@@ -16,8 +16,6 @@ steps:
         action: click
   - prompt: assert the job board shows software engineer jobs
     commands:
-      - command: focus-application
-        name: Google Chrome
       - command: assert
         async: true
         expect: the job board shows software engineer jobs
@@ -28,16 +26,12 @@ steps:
         expect: there are jobs within the TD_CITY area in the results
   - prompt: click on the skills dropdown
     commands:
-      - command: focus-application
-        name: Google Chrome
       - command: hover-text
         text: Skills
         description: skills dropdown button
         action: click
   - prompt: in the skills filter, type the word java
     commands:
-      - command: focus-application
-        name: Google Chrome
       - command: hover-text
         text: Type to filter...
         description: skills filter input field
@@ -53,16 +47,12 @@ steps:
           dropdown
   - prompt: click on the java option in the skills menu
     commands:
-      - command: focus-application
-        name: Google Chrome
       - command: hover-text
         text: Java
         description: java option in the skills dropdown
         action: click
   - prompt: click on java within the skills menu. it has the number of jobs next to it
     commands:
-      - command: focus-application
-        name: Google Chrome
       - command: hover-text
         text: Java
         description: java option with the number of jobs in the skills dropdown
@@ -70,16 +60,12 @@ steps:
         method: ai
   - prompt: click apply
     commands:
-      - command: focus-application
-        name: Google Chrome
       - command: hover-text
         text: APPLY
         description: apply button in the skills dropdown
         action: click
   - prompt: click on one of the jobs
     commands:
-      - command: focus-application
-        name: Google Chrome
       - command: hover-text
         method: ai
         text: Backend Software Engineer
@@ -87,8 +73,6 @@ steps:
         action: click
   - prompt: scroll until top skills
     commands:
-      - command: focus-application
-        name: Google Chrome
       - command: scroll-until-text
         text: Top Skills
         direction: down
