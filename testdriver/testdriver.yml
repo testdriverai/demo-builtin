@@ -67,6 +67,7 @@ steps:
         text: Java (221)
         description: java option with the number of jobs in the skills dropdown
         action: click
+        method: ai
   - prompt: click apply
     commands:
       - command: focus-application
