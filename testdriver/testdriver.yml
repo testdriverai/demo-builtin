@@ -64,7 +64,7 @@ steps:
       - command: focus-application
         name: Google Chrome
       - command: hover-text
-        text: Java (221)
+        text: Java
         description: java option with the number of jobs in the skills dropdown
         action: click
         method: ai
