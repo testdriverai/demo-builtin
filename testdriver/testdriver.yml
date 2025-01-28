@@ -80,14 +80,6 @@ steps:
       - command: focus-application
         name: Google Chrome
       - command: hover-text
-        text: Backend Software Engineer
-        description: job title in the job listings
-        action: click
-  - prompt: click on one of the jobs
-    commands:
-      - command: focus-application
-        name: Google Chrome
-      - command: hover-text
         method: ai
         text: Backend Software Engineer
         description: first job listing on the page
