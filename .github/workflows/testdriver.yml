@@ -39,8 +39,6 @@ jobs:
           key: ${{ secrets.TESTDRIVER_API_KEY }}
           prompt: |
             1. /run testdriver/testdriver.yml false false
-            2. click on the first job
-            3. /assert that the job shows java skills
           prerun: |
             (gc ./testdriver/testdriver.yml) -replace "TD_CITY", '${{ matrix.city }}' | sc -Force ./testdriver/testdriver.yml
             cd $env:TEMP

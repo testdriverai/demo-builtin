@@ -88,6 +88,7 @@ steps:
       - command: focus-application
         name: Google Chrome
       - command: hover-text
+        method: ai
         text: Backend Software Engineer
         description: first job listing on the page
         action: click
